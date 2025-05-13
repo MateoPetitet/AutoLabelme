@@ -41,8 +41,8 @@ for dossier in dir_list:    # Explore subfolders
                 os.makedirs(output_dir, exist_ok=True)  # Create directory if missing
             
             # Write JSON file from txt
-            txt_filename = image.replace('.PNG', '.txt')
+            txt_filename = image.replace('.png', '.txt')
             txt_path = os.path.join(output_dir, txt_filename)
             with open(txt_path, 'w') as f:
-                f.write("{\n  \"version\": \""+args.version+"\",\n  \"flags\": {},\n  \"shapes\": [\n    {\n      \"label\": \""+dossier+"\",\n      \"points\": [\n        [\n          0.0,\n          0.0\n        ],\n        [\n          "+str(largeur)+".0,\n          "+str(hauteur)+".0\n        ]\n      ],\n      \"group_id\": null,\n      \"description\": \"\",\n      \"shape_type\": \"rectangle\",\n      \"flags\": {}\n    }\n  ],\n  \"imagePath\": \""+args.path[3:]+"\\\\"+dossier+"\\\\"+image+"\",\n  \"imageData\": \""+base64_data+"\",\n  \"imageHeight\": "+str(hauteur)+",\n  \"imageWidth\": "+str(largeur)+"\n}\n\n")  # Awful but fstrings are not adaptated for our situation
+                f.write("{\n  \"version\": \""+args.version+"\",\n  \"flags\": {},\n  \"shapes\": [\n    {\n      \"label\": \""+dossier+"\",\n      \"points\": [\n        [\n          0.0,\n          0.0\n        ],\n        [\n          "+str(largeur)+".0,\n          "+str(hauteur)+".0\n        ]\n      ],\n      \"group_id\": null,\n      \"description\": \"\",\n      \"shape_type\": \"rectangle\",\n      \"flags\": {}\n    }\n  ],\n  \"imagePath\": \""+args.path+dossier+"/"+image+"\",\n  \"imageData\": \""+base64_data+"\",\n  \"imageHeight\": "+str(hauteur)+",\n  \"imageWidth\": "+str(largeur)+"\n}\n\n")  # Awful but fstrings are not adaptated for our situation
             os.rename(txt_path,txt_path.replace('.txt', '.json'))
