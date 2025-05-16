@@ -10,10 +10,10 @@ import base64
 import argparse
 
 parser = argparse.ArgumentParser(description='Generate annotation Labelme JSON files from rectangle cropped images.')
-parser.add_argument('--path', type=str, help='Path to the dataset directory')
-parser.add_argument('--mode', type=int, choices=[0, 1], default=0,
+parser.add_argument('--path', '--p', type=str, help='Path to the dataset directory')
+parser.add_argument('--mode', '--m', type=int, choices=[0, 1], default=0,
                     help='Mode: 0 to save in original folders alongside crops, 1 to save in dedicated folder labelme_json')
-parser.add_argument('--version', type=str, default='5.2.1',
+parser.add_argument('--version', '--v', type=str, default='5.2.1',
                     help='Enter labelme version you want to emulate. Default : "5.2.1"')
 args = parser.parse_args()
 
